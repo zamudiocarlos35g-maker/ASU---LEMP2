@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Environment Management Plan - Carlos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Warm Sandstone & Teal -->
+    <!-- Application Structure Plan: Designed a single-page thematic SPA with a sticky top-nav for the 5 plan sections. This is more user-friendly than a long document. Key interactions are JS-driven accordions/tabs for "Routines" and "Rules" and a visual HTML/CSS-based flow diagram for "Consequences" to make the content interactive and digestible, which is ideal for a busy audience like parents or administrators. -->
+    <!-- Visualization & Content Choices: 1. Routines (Table) -> Goal: Inform -> Viz: Interactive Accordion (JS/HTML) -> Interaction: Click button to show details. Justification: Condenses 7 large text blocks into one clean interface. 2. Rules (Table) -> Goal: Inform -> Viz: Click-to-expand Cards (JS/HTML) -> Interaction: Click card to reveal definition. Justification: Better than a static list. 3. Negative Consequences (Table) -> Goal: Show Process -> Viz: Vertical Flow Diagram (HTML/Tailwind/Unicode) -> Interaction: Click-to-expand Tiers. Justification: Visually represents the hierarchy clearly. 4. Positive Consequences (Table) -> Goal: Organize -> Viz: 4-quadrant grid of Click-to-expand Cards (JS/HTML). Justification: Easy to compare the 4 types. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .routine-btn.active {
+            background-color: #0d9488; /* teal-600 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="sticky top-0 z-50 w-full bg-white shadow-md">
+        <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
+            <div class="text-xl font-bold text-teal-700">Carlos's LEMP</div>
+            <div class="hidden sm:flex space-x-4">
+                <a href="#intro" class="font-medium text-stone-600 hover:text-teal-600 transition duration-300">Introduction</a>
+                <a href="#routines" class="font-medium text-stone-600 hover:text-teal-600 transition duration-300">Routines</a>
+                <a href="#rules" class="font-medium text-stone-600 hover:text-teal-600 transition duration-300">Rules</a>
+                <a href="#consequences" class="font-medium text-stone-600 hover:text-teal-600 transition duration-300">Consequences</a>
+            </div>
+            <button id="mobile-menu-btn" class="sm:hidden text-stone-600 hover:text-teal-600" aria-label="Open menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden sm:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-stone-200">
+            <a href="#intro" class="block text-center p-3 font-medium text-stone-600 hover:bg-teal-50">Introduction</a>
+            <a href="#routines" class="block text-center p-3 font-medium text-stone-600 hover:bg-teal-50">Routines</a>
+            <a href="#rules" class="block text-center p-3 font-medium text-stone-600 hover:bg-teal-50">Rules</a>
+            <a href="#consequences" class="block text-center p-3 font-medium text-stone-600 hover:bg-teal-50">Consequences</a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-4 sm:p-8 space-y-24">
+
+        <section id="intro" class="pt-16 -mt-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-1 flex justify-center">
+                    <img src="https://drive.google.com/uc?id=126Oq--uxQ87z_wp5R6uworSWnBIrPXkr" alt="Carlos's Professional Headshot" class="w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover border-4 border-teal-600 shadow-lg" id="user-image" onerror="this.src='https://placehold.co/256x256/0d9488/FFFFFF?text=Carlos'; this.onerror=null;">
+                </div>
+                <div class="md:col-span-2">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-teal-700 mb-4">Welcome to the "Tactile & Teamwork" Classroom!</h1>
+                    <p class="text-lg text-stone-700 leading-relaxed">
+                        Hello! My name is Carlos, and I am committed to creating an inclusive, safe, and highly structured learning environment. I come to this profession after working full-time as a paraeducator for students with visual impairments, has given me a deep, hands-on understanding of the needs and incredible potential of every child. I am also currently working toward my special education degree. I believe education is a team effort, and my goal is to foster **independence, critical thinking, and strong self-advocacy skills** in every student. I look forward to working together to ensure a supportive and exciting year of growth!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="routines" class="pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center text-teal-700 mb-4">Routines & Procedures</h2>
+            <p class="text-lg text-center text-stone-700 max-w-3xl mx-auto mb-12">
+                Clear, consistent routines are essential for predictability and safety, especially for students with visual impairments who rely on spatial memory and auditory cues. Click each routine to see the specific steps.
+            </p>
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6">
+                <button class="routine-btn active" data-routine="arriving">1. Arriving at School</button>
+                <button class="routine-btn" data-routine="turningInWork">2. Turning in Work</button>
+                <button class="routine-btn" data-routine="requestingBreak">3. Requesting Bathroom/Water</button>
+                <button class="routine-btn" data-routine="transitioning">4. Transitioning</button>
+                <button class="routine-btn" data-routine="lineUp">5. Line Up / Hallway</button>
+                <button class="routine-btn" data-routine="materials">6. Material Distribution</button>
+                <button class="routine-btn" data-routine="fastFinishers">7. Fast Finishers</button>
+            </div>
+
+            <div id="routine-content" class="bg-white p-6 sm:p-8 rounded-lg shadow-xl transition-all duration-500 min-h-[200px]">
+            </div>
+        </section>
+
+        <section id="rules" class="pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center text-teal-700 mb-4">Rules & Expectations</h2>
+            <p class="text-lg text-center text-stone-700 max-w-3xl mx-auto mb-12">
+                Our class rules are positively phrased, short, and clear. Click each rule to learn what it looks and sounds like in our classroom.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="interactive-card" data-rule="rule1">
+                    <h3 class="text-xl font-bold">1. Be Respectful</h3>
+                    <p class="text-stone-600">Use Kind Words and Actions.</p>
+                </div>
+                <div class="interactive-card" data-rule="rule2">
+                    <h3 class="text-xl font-bold">2. Be Responsible</h3>
+                    <p class="text-stone-600">Care for Our Tools and Space.</p>
+                </div>
+                <div class="interactive-card" data-rule="rule3">
+                    <h3 class="text-xl font-bold">3. Be Ready</h3>
+                    <p class="text-stone-600">Follow Directions Quickly and Quietly.</p>
+                </div>
+                <div class="interactive-card" data-rule="rule4">
+                    <h3 class="text-xl font-bold">4. Be Safe</h3>
+                    <p class="text-stone-600">Keep Your Body Secure.</p>
+                </div>
+                <div class="interactive-card sm:col-span-2 lg:col-span-1" data-rule="rule5">
+                    <h3 class="text-xl font-bold">5. Be a Team Player</h3>
+                    <p class="text-stone-600">Help Others Learn.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="consequences" class="pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center text-teal-700 mb-12">Consequences & Reinforcement</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+                <div>
+                    <h3 class="text-2xl font-bold text-center text-red-700 mb-6">Negative Consequences</h3>
+                    <p class="text-stone-700 text-center mb-8">Consequences are delivered privately and calmly, following a clear hierarchy from least to most intrusive.</p>
+                    <div class="flex flex-col items-center space-y-4">
+                        <div class="consequence-tier" data-tier="tier1">
+                            <h4 class="font-bold">Tier 1: Non-Verbal/Proximity Cue</h4>
+                        </div>
+                        <span class="text-2xl text-red-400">&darr;</span>
+                        <div class="consequence-tier" data-tier="tier2">
+                            <h4 class="font-bold">Tier 2: Rule Review & Loss of Privilege</h4>
+                        </div>
+                        <span class="text-2xl text-red-400">&darr;</span>
+                        <div class="consequence-tier" data-tier="tier3">
+                            <h4 class="font-bold">Tier 3: Re-teaching & Time-Out</h4>
+                        </div>
+                        <span class="text-2xl text-red-400">&darr;</span>
+                        <div class="consequence-tier" data-tier="tier4">
+                            <h4 class="font-bold">Tier 4: Office Referral</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-center text-green-700 mb-6">Positive Consequences</h3>
+                    <p class="text-stone-700 text-center mb-8">Positive consequences are used frequently and enthusiastically to reinforce appropriate behavior.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="interactive-card" data-positive="pos1">
+                            <h3 class="text-xl font-bold">1. Teacher Attention</h3>
+                        </div>
+                        <div class="interactive-card" data-positive="pos2">
+                            <h3 class="text-xl font-bold">2. Public Recognition</h3>
+                        </div>
+                        <div class="interactive-card" data-positive="pos3">
+                            <h3 class="text-xl font-bold">3. Certificates</h3>
+                        </div>
+                        <div class="interactive-card" data-positive="pos4">
+                            <h3 class="text-xl font-bold">4. Special Activities</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-8 mt-16 bg-stone-200 text-stone-600">
+        <p>Learning Environment & Management Plan</p>
+        <p class="text-sm">Carlos | Special Education Fellowship</p>
+    </footer>
+
+    <script>
+        const routineData = {
+            arriving: {
+                title: "1. Arriving at School / Beginning of Class",
+                behaviors: [
+                    "Locate your assigned tactile carpet square or desk using the low-vision line/foot-guide.",
+                    "Hang your backpack on your labeled hook near the door (braille/large print).",
+                    "Retrieve your personal sensory item (if needed) and pencil/stylus from your cubby.",
+                    "Quietly begin the <strong>Morning Sensory Task</strong> (a rotating manipulative or warm-up activity placed on the desk)."
+                ],
+                note: "<strong>Auditory Cue:</strong> A specific 3-note chime signals the start of the Morning Task. <br><strong>Tactile Cue:</strong> Tasks are always located in the upper-right corner of the desk."
+            },
+            turningInWork: {
+                title: "2. Turning in Work",
+                behaviors: [
+                    "Locate the Braille/Large Print labeled 'Done' tray on the circulation table.",
+                    "Stack your paper/braille slate neatly.",
+                    "Use the tactile counter on the side of the tray to confirm you put the assignment inside.",
+                    "Return quietly to your seat and choose a 'Fast Finisher' activity."
+                ],
+                note: "<strong>Tactile Cue:</strong> The 'Done' tray has a unique texture marker (e.g., felt) on the front edge. <br><strong>Auditory Confirmation:</strong> The teacher acknowledges the submission with a soft verbal affirmation ('Thank you, you're all set')."
+            },
+            requestingBreak: {
+                title: "3. Requesting the Bathroom/Water",
+                behaviors: [
+                    "Raise your hand silently (visual cue for teacher/aides).",
+                    "Place your non-writing hand flat on your desk (tactile self-regulation cue).",
+                    "Wait patiently for the teacher to tap your desk or call your name softly."
+                ],
+                note: "<strong>Auditory Cues:</strong> The teacher uses the phrase 'I see a hand and a flat desk' to reinforce the procedure. <br><strong>Accessibility:</strong> Students can request breaks verbally during independent work time."
+            },
+            transitioning: {
+                title: "4. Transitioning to a New Activity",
+                behaviors: [
+                    "Listen for the <strong>'Transition Song'</strong> (a simple 15-second auditory jingle).",
+                    "Clear your work surface completely, placing all math materials in the labeled 'Math Bin' on the shelf.",
+                    "Stand up behind your seat and push your chair in until it clicks.",
+                    "Wait for the teacher's auditory cue: 'Let's move to the rug.'"
+                ],
+                note: "<strong>Auditory/Music Cue:</strong> A dedicated, short jingle signals the required shift. <br><strong>Physical Cue:</strong> Students are trained to use the chair's 'click' as confirmation of the correct position."
+            },
+            lineUp: {
+                title: "5. Line Up / Moving in the Hallway",
+                behaviors: [
+                    "Wait for your row's number to be called (auditory grouping).",
+                    "Stand and line up <strong>next to the rope guide</strong> (a braided cord running along the wall to the door).",
+                    "Walk quietly, keeping two fingers lightly on the rope.",
+                    "Stop immediately when the rope guide stops."
+                ],
+                note: "<strong>Tactile/Rope Guide:</strong> This non-visual guide is the primary mechanism for safety and alignment, promoting student <strong>independence</strong> in navigation. <br><strong>Auditory Cue:</strong> 'Feet still, voices off.'"
+            },
+            materials: {
+                title: "6. Material Distribution",
+                behaviors: [
+                    "Wait patiently until the material is placed directly into your hands or onto your desk.",
+                    "If using a partner, the distributor uses the phrase 'Ready hands' before passing the item.",
+                    "Do not start until the teacher's auditory signal, 'Begin.'"
+                ],
+                note: "<strong>Tactile Cue:</strong> Materials are always placed in the same spot on the desk or directly into the student's hands to ensure reliable access. <br><strong>Consistency:</strong> Reduces the need for students to search or reach across the room."
+            },
+            fastFinishers: {
+                title: "7. Fast Finishers",
+                behaviors: [
+                    "Once the primary task is submitted (Routine #2), students may select one activity from the <strong>Fast Finisher Center</strong>.",
+                    "They may choose a Braille or audio book, a tactile puzzle, or a sensory bin activity.",
+                    "Complete the activity quietly at their assigned seat."
+                ],
+                note: "<strong>Student Choice:</strong> All options are self-directed and require minimal setup. <br><strong>Tactile/Auditory Options:</strong> Eliminates visual requirement, promoting continued engagement."
+            }
+        };
+
+        const ruleData = {
+            rule1: "Students will use respectful language when speaking and will keep hands and feet to themselves. This includes using gentle hands on others' equipment (braillewriters, magnifiers, etc.).",
+            rule2: "Students will keep all learning materials, including braille materials and tactile maps, neatly organized. Tools must be returned to their designated location before a transition.",
+            rule3: "Students will respond immediately (within 5 seconds) to all teacher cues (chime, verbal command, or tap). Students will use a 'voice level 0' during transitions and independent work.",
+            rule4: "Students will use the designated rope guide or a spotter when walking. Students will keep their chairs pushed in when standing to prevent trips.",
+            rule5: "Students will raise a silent hand to ask questions and will wait their turn patiently. Students will use encouraging language when working with a partner."
+        };
+
+        const consequenceData = {
+            tier1: "The teacher uses a specific sound (e.g., a quiet tap on the desk) or moves close to the student. If needed, a private, quiet reminder of the <em>expected behavior</em> is given (e.g., 'Ready hands,' reminding them of Rule 1).",
+            tier2: "The student misses 5 minutes of choice-based Fast Finisher time. This is reset daily. Data is logged for the student (date/time/rule) on an individual tracking chart.",
+            tier3: "The student completes a <strong>Behavior Re-teaching Form</strong> (large print/braille) detailing which rule was broken and what they need to do next time. <strong>Contact with parent/guardian.</strong>",
+            tier4: "The teacher calmly calls the office/administration using the internal line while ensuring the safety of all other students. <strong>Immediate parent contact and documented disciplinary action.</strong>",
+            pos1: "<strong>Method:</strong> Frequent, specific, and genuine praise immediately follows the desired behavior. The focus is on the <em>behavior</em> (e.g., 'Using kind words') not the student's innate qualities. Physical cues are clear and predictable.",
+            pos2: "<strong>Method:</strong> Recognition is delivered both visually (for low vision students) and audibly/tactilely. We celebrate the 'Braille Star' over the loudspeaker during morning announcements so all students and the community can hear.",
+            pos3: "<strong>Method:</strong> Awards are given out weekly for meeting specific behavior goals (e.g., mastering the Line Up procedure for 5 days). The token can be used to purchase items from the classroom store.",
+            pos4: "<strong>Method:</strong> Activities are low-cost, high-interest privileges tied to meeting classroom behavior goals (e.g., 20 Teamwork Tokens earns Lunch with the Teacher). This reinforces the connection between effort and reward."
+        };
+
+        const routineContentEl = document.getElementById('routine-content');
+        const routineBtns = document.querySelectorAll('.routine-btn');
+
+        function showRoutine(routineId) {
+            const data = routineData[routineId];
+            if (!data) return;
+
+            let behaviorsHtml = data.behaviors.map(b => `<li class="mb-2">${b}</li>`).join('');
+            
+            routineContentEl.innerHTML = `
+                <h3 class="text-2xl font-bold text-teal-700 mb-4">${data.title}</h3>
+                <h4 class="font-bold text-stone-700 mb-2">Student Behaviors:</h4>
+                <ul class="list-disc list-inside text-stone-700 mb-6 space-y-2">
+                    ${behaviorsHtml}
+                </ul>
+                <h4 class="font-bold text-stone-700 mb-2">UDL/Accessibility Note:</h4>
+                <p class="text-stone-700 bg-teal-50 p-4 rounded-md border-l-4 border-teal-500">${data.note}</p>
+            `;
+
+            routineBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.routine === routineId) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        routineBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                showRoutine(btn.dataset.routine);
+            });
+            btn.classList.add('px-4', 'py-2', 'font-medium', 'rounded-full', 'bg-white', 'text-teal-700', 'border', 'border-teal-200', 'hover:bg-teal-50', 'transition', 'duration-300', 'shadow-sm', 'hover:shadow-md');
+        });
+
+        function toggleCardDetails(card, dataKey, dataSet) {
+            let detailEl = card.querySelector('.details');
+            if (detailEl) {
+                detailEl.remove();
+                card.classList.remove('ring-2', 'ring-teal-500');
+            } else {
+                const content = dataSet[dataKey];
+                if (content) {
+                    detailEl = document.createElement('div');
+                    detailEl.className = 'details mt-4 text-stone-700';
+                    detailEl.innerHTML = content;
+                    card.appendChild(detailEl);
+                    card.classList.add('ring-2', 'ring-teal-500');
+                }
+            }
+        }
+
+        document.querySelectorAll('.interactive-card').forEach(card => {
+            card.classList.add('p-6', 'bg-white', 'rounded-lg', 'shadow-lg', 'cursor-pointer', 'transition', 'duration-300', 'hover:shadow-xl', 'hover:-translate-y-1');
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+
+            const ruleKey = card.dataset.rule;
+            const positiveKey = card.dataset.positive;
+
+            const listener = () => {
+                if (ruleKey) {
+                    toggleCardDetails(card, ruleKey, ruleData);
+                } else if (positiveKey) {
+                    toggleCardDetails(card, positiveKey, consequenceData);
+                }
+            };
+            
+            card.addEventListener('click', listener);
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    listener();
+                }
+            });
+        });
+        
+        document.querySelectorAll('.consequence-tier').forEach(tier => {
+            tier.classList.add('p-4', 'bg-white', 'rounded-lg', 'shadow-lg', 'cursor-pointer', 'transition', 'duration-300', 'hover:shadow-xl', 'w-full', 'max-w-md', 'text-center', 'border-2', 'border-transparent', 'hover:border-red-300');
+            tier.setAttribute('role', 'button');
+            tier.setAttribute('tabindex', '0');
+
+            const tierKey = tier.dataset.tier;
+            const listener = () => {
+                toggleCardDetails(tier, tierKey, consequenceData);
+                tier.classList.toggle('ring-2');
+                tier.classList.toggle('ring-red-500');
+            };
+
+            tier.addEventListener('click', listener);
+            tier.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    listener();
+                }
+            });
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        window.onload = () => {
+            showRoutine('arriving');
+        };
+
+    </script>
+</body>
+</html>
+
+
